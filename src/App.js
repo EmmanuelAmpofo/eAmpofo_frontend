@@ -29,7 +29,7 @@ class App extends Component {
           <Switch>
             
             <Route path="/" exact component={Register} />
-            <Route path="/chat/:name/:group" component={Chat} />
+            <Route path="/chat/:name/:room" component={Chat} />
             <Route path="/join" component={Join} />
           </Switch>
         </Router>

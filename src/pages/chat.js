@@ -25,7 +25,7 @@ class Chat extends Component {
 
     componentWillUnmount(){
         const param = {
-            group: this.props.match.params.group
+            room: this.props.match.params.room
         }
         socket.emit('leave', param);
         this.setState({...initialState});
@@ -35,7 +35,7 @@ class Chat extends Component {
         const scopeThis = this;
         const params = {
             name: this.props.match.params.name,
-            group: this.props.match.params.group
+            room: this.props.match.params.room
         }
 
         socket = io('http://localhost:8080')
@@ -59,7 +59,7 @@ class Chat extends Component {
             let newMsg = {
                 text: message.text,
                 from: message.from,
-                group: message.group,
+                room: message.room,
                 createdDate: formattedTime
             }
             let results = scopeThis.state.messages;
@@ -68,7 +68,7 @@ class Chat extends Component {
                 messages: results
             });
 
-            var msgArr = scopeThis.state.messages.filter(message => message.group === this.props.match.params.group);
+            var msgArr = scopeThis.state.messages.filter(message => message.room === this.props.match.params.room);
             if (msgArr.length > 3) {
                 scopeThis.scrollToBottom();
             }
@@ -79,7 +79,7 @@ class Chat extends Component {
             let newMsg = {
                 url: message.url,
                 from: message.from,
-                group: message.group,
+                room: message.room,
                 createdDate: formattedTime
             }
             let results = scopeThis.state.messages;
@@ -180,10 +180,10 @@ class Chat extends Component {
                         <Link to="/">
                             <i className="fas fa-chevron-circle-left"></i>
                         </Link>
-                        {this.props.match.params.group}
+                        {this.props.match.params.room}
                     </h1>
 
-                    <Messages messages={this.state.messages} group={this.props.match.params.group} />
+                    <Messages messages={this.state.messages} room={this.props.match.params.room} />
 
                     <div className="newMsgForm">
                         <div className="wrap">
@@ -201,10 +201,7 @@ class Chat extends Component {
                                 </div>
                                 <div className="btnWrap">
                                     <button type="submit" className="btn">
-                                        <i className="fab fa-telegram-plane"></i>
-                                    </button>
-                                    <button id="send_location" className="btn" onClick={() => this.sendLocation()}>
-                                        <i className="far fa-compass"></i>
+                                        go
                                     </button>
                                 </div>
                             </form>

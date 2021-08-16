@@ -32,6 +32,7 @@ class Register extends Component {
             [name]: value
         });
     }
+    
 
     
 
@@ -46,13 +47,13 @@ class Register extends Component {
                     <div className="form_row">
                         <div className="form_item">
                             <div className="form_input">
-                                <input type="text" placeholder="First Name" autoComplete="off" name="name" value={name} onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="text" placeholder="First Name" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
-                                <input type="text" placeholder="Last Name" autoComplete="off" name="name" value={name} onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="text" placeholder="Last Name" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
-                                <input type="email" placeholder="Email" autoComplete="off" name="name" value={name} onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="email" placeholder="Email" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
-                                <input type="password" placeholder="Password" autoComplete="off" name="name" value={name} onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="password" placeholder="Password" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
                             </div>
                         </div>

@@ -7,6 +7,9 @@ class ActiveUsers extends Component {
                 <h2 className="headline">
                     Active users
                 </h2>
+                {/* <div>
+                    <input className='search' placeholder='Search...' />
+                </div> */}
                 <div id="users">
                     <ul>
                         {this.props.users.map((user, index) => (
