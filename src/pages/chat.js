@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import io from 'socket.io-client';
 import ActiveUsers from './../components/activeUsers';
 import Messages from './../components/messages';
 import moment from 'moment';
-// import LoadingScreen from 'react-loading-screen';
+
+// import './register.css';
+// import './chat.css';
+// import './forms.css';
+// import './join.css';
+import '../pages/css/default.css';
 
 var socket;
 const initialState = {
@@ -138,22 +143,15 @@ class Chat extends Component {
         this.clearForm();
     }
 
-    sendLocation() {
-        this.setState({
-            fetchingLocation: true
-        });
-        if (!navigator.geolocation) {
-            return alert('GeoLocation not supported by your browser');
-        }
-        navigator.geolocation.getCurrentPosition((pos) => {
-            socket.emit('createLocationMsg', {
-                lat: pos.coords.latitude,
-                lon: pos.coords.longitude
-            });
-        }, () => {
-            alert('Unable to fetch location');
-        });
-    }
+    // searchByEmail(e){
+    //     e.preventDefault();
+    //     const value = e.target.value;
+    //     console.log(value);
+    //     this.state.users = this.state.users.filter(user => user.email === value)
+
+        
+    // }
+
 
     render() {
 
@@ -161,16 +159,6 @@ class Chat extends Component {
 
         return (
             <div className="chatPage">
-
-                {/* <LoadingScreen
-                    loading={this.state.fetchingLocation}
-                    bgColor='#F5F7F4'
-                    spinnerColor='#3597DE'
-                    textColor='#010000'
-                    text='Fetching your current location'
-                >
-                    <div className="hide"></div>
-                </LoadingScreen> */}
 
                 <ActiveUsers users={this.state.users} />
 

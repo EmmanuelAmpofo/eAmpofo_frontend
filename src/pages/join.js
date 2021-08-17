@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 // import axios from "axios";
 const initialState = {
     name: '',
-    group: ''
+    room: ''
    
 }
 
@@ -32,9 +32,9 @@ class Join extends Component {
 
     
     join() {
-        const { name, group } = this.state;
-        if (name && group) {
-            this.props.history.push(`/chat/${name}/${group}`)
+        const { name, room } = this.state;
+        if (name && room) {
+            this.props.history.push(`/chat/${name}/${room}`)
         }
     }
 
@@ -46,6 +46,7 @@ class Join extends Component {
             <div className="joinForm">
 
                 <div className="form_wrap">
+                
                     <div className="form_row">
                         <div className="form_item">
                             <div className="form_input">
@@ -57,10 +58,11 @@ class Join extends Component {
                     <div className="form_row">
                         <div className="form_item">
                             <div className="form_select">
-                                <select name="group" onChange={this.inputUpdate.bind(this)}>
-                                    <option value="">Please select a group</option>
-                                    <option value="React JS">React JS</option>
-                                    <option value="Node JS">Node JS</option>
+                                
+                                <select name="room" onChange={this.inputUpdate.bind(this)}>
+                                    <option value="">Please select a batch</option>
+                                    <option value="Batch 4">Batch 4</option>
+                                    <option value="Batch 5">Batch 5</option>
                                 </select>
                                 <i className="fas fa-chevron-down"></i>
                             </div>
@@ -68,13 +70,10 @@ class Join extends Component {
                     </div>
                     <div className="form_buttons">
                         <button onClick={() => this.join()} className="btn">
-                            Join
+                            ADD TO BATCH
                         </button>
                     </div>
                 </div>
-
-
-
 
             </div>
         )

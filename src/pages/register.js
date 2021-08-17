@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 // import axios from "axios";
-import './register.css';
+// import './register.css';
+import '../pages/css/chat.css';
+// import './forms.css';
+import '../pages/css/add.css';
+// import './grid.css';
 
 const initialState = {
     password: '',
@@ -33,12 +37,17 @@ class Register extends Component {
         });
     }
     
+    
 
     
 
     render(){
 
-        const { name } = this.state;
+        const { firstName } = this.state;
+        const { lastName } = this.state;
+        const { email } = this.state;
+        const { password } = this.state;
+
 
         return (
             <div className="registerForm">
@@ -47,29 +56,18 @@ class Register extends Component {
                     <div className="form_row">
                         <div className="form_item">
                             <div className="form_input">
-                                <input type="text" placeholder="First Name" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="text" placeholder="First Name" autoComplete="off" name="firstName" value={firstName} onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
-                                <input type="text" placeholder="Last Name" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="text" placeholder="Last Name" autoComplete="off" name="lastName" value={lastName} onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
-                                <input type="email" placeholder="Email" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="email" placeholder="Email" autoComplete="off" name="email" value={email} onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
-                                <input type="password" placeholder="Password" autoComplete="off" name="name"  onChange={this.inputUpdate.bind(this)} required/>
+                                <input type="password" placeholder="Password" autoComplete="off" name="password" value={password} onChange={this.inputUpdate.bind(this)} required/>
                                 <span className="bottom_border"></span>
                             </div>
                         </div>
                     </div>
-                    {/* <div className="form_row">
-                        <div className="form_item">
-                            <div className="form_select">
-                                <select name="group" onChange={this.inputUpdate.bind(this)}>
-                                    <option value="">Please select a group</option>
-                                    <option value="React JS">React JS</option>
-                                    <option value="Node JS">Node JS</option>
-                                </select>
-                                <i className="fas fa-chevron-down"></i>
-                            </div>
-                        </div>
-                    </div> */}
+                    
                         <button onClick={() => this.register()} className="btn">
                             Register
                         </button>
