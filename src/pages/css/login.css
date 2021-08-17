@@ -13,7 +13,7 @@
 .password{
     width: 25vw;
     height: 5vh;
-    margin-bottom: 2vh;
+    /* margin-bottom: 2vh; */
     border-radius: 5px;
 }
 .btnWrapp{
