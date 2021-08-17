@@ -58,7 +58,8 @@ const Login = (props) => {
                <form className="signIn">
                    <input className="email" type="text" placeholder="Enter your email" onChange={onChangeEmail} /> <br ></br>
                    <input className="password" type="password" placeholder="Enter your password" onChange={onChangePassword} /><br ></br>
-                   {/* later change link to main chat page */}
+                   <h5>Dont have an account? <a href='/register'>Sign Up</a> </h5>
+                   
                    <Link to='/join' onClick={onClickButton}> 
                         <button className="btnWrapp" type="submit" >Sign In</button>
                    </Link>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 // import axios from "axios";
-// import './register.css';
+import '../pages/css/register.css';
 import '../pages/css/chat.css';
 import '../pages/css/forms.css';
 import '../pages/css/add.css';
@@ -43,16 +43,16 @@ class Register extends Component {
 
     render(){
 
-        const { firstName } = this.state;
-        const { lastName } = this.state;
-        const { email } = this.state;
-        const { password } = this.state;
+        // const { firstName } = this.state;
+        // const { lastName } = this.state;
+        // const { email } = this.state;
+        // const { password } = this.state;
 
 
         return (
             <div className="registerForm">
 
-                <div className="form_wrap">
+                {/* <div className="form_wrap">
                     <div className="form_row">
                         <div className="form_item">
                             <div className="form_input">
@@ -72,7 +72,27 @@ class Register extends Component {
                             Register
                         </button>
                     
-                </div>
+                </div> */}
+                <div className="form_wrap">
+                    <div className="formrows">
+                    <h2>SIGN UP</h2>
+                    <form className="">
+                        <input className="firstName" type="text" placeholder="Enter your first name"  required/> <br ></br>
+                        <input className="lastName" type="text" placeholder="Enter your last name"  required/> <br ></br>
+                        <input className="email" type="text" placeholder="Enter your email"  required/> <br ></br>
+                        <input className="password" type="password" placeholder="Enter your password"  required/><br ></br>
+                        <h5>Already have an account? <a href='/login'>Sign In</a> </h5>
+                   
+                        <Link to='/join' > 
+                        <button className="btnWrapp" type="submit" >Sign Up</button>
+                        </Link>
+                    
+                    </form> 
+           </div>
+           {/* <Route exact path="/">
+            {loggedIn ? <Redirect to="/join" /> : null}
+            </Route> */}
+       </div>
 
             </div>
         )
