@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 // import axios from "axios";
 // import './register.css';
 import '../pages/css/chat.css';
-// import './forms.css';
+import '../pages/css/forms.css';
 import '../pages/css/add.css';
 // import './grid.css';
 
