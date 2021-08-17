@@ -53,7 +53,6 @@ class Chat extends Component {
         });
 
         socket.on('updateUserList', function (users) {
-            console.log(users)
             scopeThis.setState({
                 users
             });
@@ -154,7 +153,6 @@ class Chat extends Component {
 
 
     render() {
-
         const { newMsg } = this.state;
 
         return (

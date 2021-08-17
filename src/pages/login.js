@@ -46,6 +46,7 @@ const Login = (props) => {
                 else{
                     setLoggedIn(true);
                     localStorage.setItem("token",   JSON.stringify(data.token))
+                    localStorage.setItem("email", JSON.stringify(email))
                 }
             });
         }

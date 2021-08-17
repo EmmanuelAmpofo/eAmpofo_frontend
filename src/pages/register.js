@@ -33,6 +33,26 @@ const Register = () => {
     const [email, setEmail] = useState(' ');
     const [password, setPassword] = useState(' ')
     
+    const inputUpdate = (e) =>{
+        const name = e.target.name;
+        const value = e.target.value;
+        switch(name){
+            case "firstName":
+                setfirstName(value);
+                break;
+            case "lastName":
+                setlastName(value);
+                break;
+            case "password":
+                setPassword(value);
+                break;
+            case "email":
+                setEmail(value);
+                break;
+            default:
+                return
+        }
+    }
 
     const onClickButton = (event) => {
         if(!firstName || !lastName || !email || !password){
@@ -48,18 +68,13 @@ const Register = () => {
                 "Content-type": "application/json"
             }
             // Login url by concatenating with the backend url
-            const REGISTER_URL =  "/users/register"; 
+            const REGISTER_URL =  "http://localhost:8080/users/register"; 
             axios.post(REGISTER_URL, credentials, {headers})
             .then(response =>{
                 const {data} = response;
-                console.log(data)
 
                 if(data.status !== 200)
                 alert(data.error)
-                else{
-                    // setLoggedIn(true);
-                    localStorage.setItem("token",   JSON.stringify(data.token))
-                }
             });
         }
     }
@@ -99,10 +114,10 @@ const Register = () => {
                 <div className="formrows">
                 <h2>SIGN UP</h2>
                 <form className="">
-                    <input className="firstName" type="text" placeholder="Enter your first name"  required/> <br ></br>
-                    <input className="lastName" type="text" placeholder="Enter your last name"  required/> <br ></br>
-                    <input className="email" type="text" placeholder="Enter your email"  required/> <br ></br>
-                    <input className="password" type="password" placeholder="Enter your password"  required/><br ></br>
+                    <input className="firstName" type="text" name="firstName" placeholder="Enter your first name"  onChange={inputUpdate.bind(this)} required/> <br ></br>
+                    <input className="lastName" type="text" name="lastName" placeholder="Enter your last name" onChange={inputUpdate.bind(this)} required/> <br ></br>
+                    <input className="email" type="text" name="email" placeholder="Enter your email"  onChange={inputUpdate.bind(this)} required/> <br ></br>
+                    <input className="password" name="password" type="password" placeholder="Enter your password"  onChange={inputUpdate.bind(this)} required/><br ></br>
                     <h5>Already have an account? <a href='/login'>Sign In</a> </h5>
                    
                     <Link to='/join' onClick={onClickButton}> 
