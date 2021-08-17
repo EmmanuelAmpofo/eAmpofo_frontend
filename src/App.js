@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import classNames from 'classnames';
-// import './assets/scss/styles.scss';
+
 
 import Register from './pages/register'
 import Chat from './pages/chat';
 import Join from './pages/join';
+import login from './pages/login';
 
 class App extends Component {
 
@@ -31,6 +32,7 @@ class App extends Component {
             <Route path="/" exact component={Register} />
             <Route path="/chat/:name/:room" component={Chat} />
             <Route path="/join" component={Join} />
+            <Route path="/login" component={login} />
           </Switch>
         </Router>
       </div>
