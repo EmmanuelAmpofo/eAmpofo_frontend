@@ -1,78 +1,124 @@
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { Route } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
+import {GoogleLogin} from 'react-google-login'
 
-import '../pages/css/login.css';
+import "../pages/css/login.css";
 
-import { Redirect } from 'react-router';
-
+// import { Redirect } from 'react-router';
 
 const Login = (props) => {
-    const [email, setEmail] = useState(' ');
-    const [password, setPassword] = useState(' ')
-    const [loggedIn, setLoggedIn] = useState(localStorage.getItem("token") ? true: false);
-    //handle change in email input field
-    const onChangeEmail = (event) => {
-        setEmail(event.target.value)
-    }
+  
+  const [email, setEmail] = useState(" ");
+  const [password, setPassword] = useState(" ");
+  const [loggedIn, setLoggedIn] = useState(
+    localStorage.getItem("token") ? true : false
+  );
+  //handle change in email input field
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
 
-    //handle change in email input field
-    const onChangePassword = (event) =>{
-        setPassword(event.target.value)
-    }
+  //handle change in email input field
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
 
-    //prevent default behaviour of button on click
-    const onClickButton = (event) => {
-        if(!email || !password){
-            event.preventDefault()
-        } else {
-            const credentials = {
-                email: email,
-                password: password
-            }
-            const headers = {
-                "Content-type": "application/json"
-            }
-            // Login url by concatenating with the backend url
-            const LOGIN_URL =  "/users/login"; 
-            axios.post(LOGIN_URL, credentials, {headers})
-            .then(response =>{
-                const {data} = response;
-                console.log(data)
+  //prevent default behaviour of button on click
+  const onClickButton = (event) => {
+    if (email && password) {
+      const credentials = {
+        email: email,
+        password: password,
+      };
+      const headers = {
+        "Content-type": "application/json",
+      };
+      // Login url by concatenating with the backend url
+      const LOGIN_URL = "/users/login";
+      axios.post(LOGIN_URL, credentials, { headers }).then((response) => {
+        const { data } = response;
+        console.log(data);
 
-                if(data.status !== 200)
-                alert(data.error)
-                else{
-                    setLoggedIn(true);
-                    localStorage.setItem("token",   JSON.stringify(data.token))
-                    localStorage.setItem("email", JSON.stringify(email))
-                }
-            });
+        if (data.status !== 200) alert(data.error);
+        else {
+          setLoggedIn(true);
+          localStorage.setItem("token", JSON.stringify(data.token));
+          localStorage.setItem("email", JSON.stringify(email));
         }
+      });
+    } else {
+      event.preventDefault();
     }
-    
-    return (
-       <div className="form_wrap">
-           <div className="formrow">
-               <h2>SIGN IN</h2>
-               <form className="signIn">
-                   <input className="email" type="text" placeholder="Enter your email" onChange={onChangeEmail} /> <br ></br>
-                   <input className="password" type="password" placeholder="Enter your password" onChange={onChangePassword} /><br ></br>
-                   <h5>Dont have an account? <a href='/register'>Sign Up</a> </h5>
-                   
-                   <Link to='/join' onClick={onClickButton}> 
-                        <button className="btnWrapp" type="submit" >Sign In</button>
-                   </Link>
-                    
-               </form> 
-           </div>
-           <Route exact path="/">
+  };
+
+  return (
+    <div className="form_wrap">
+      <div className="formrow">
+        <h2>SIGN IN</h2>
+        <form className="signIn">
+          <input
+            className="email"
+            type="text"
+            placeholder="Enter your email"
+            onChange={onChangeEmail}
+          />{" "}
+          <br></br>
+          <input
+            className="password"
+            type="password"
+            placeholder="Enter your password"
+            onChange={onChangePassword}
+          />
+          <br></br>
+          <h5>
+            Dont have an account? <a href="/register">Sign Up</a>{" "}
+          </h5>
+          <Link to="/join" onClick={onClickButton}>
+            <button className="btnWrapp" type="submit">
+              Sign In
+            </button>
+          </Link>
+        </form>
+      </div>
+      {/* <Route exact path="/">
             {loggedIn ? <Redirect to="/join" /> : null}
-            </Route>
-       </div>
-    )
+            </Route> */}
+            <GoogleClientLogin/>
+    </div>
+  );
+};
+
+function GoogleClientLogin(){
+  const history = useHistory()
+  function GoogleResponse (response){
+    if(response.profileObj){
+      let data = response.profileObj;
+      console.log(data)
+      history.push('/join')
+    }else{
+      const {error} = response;
+      switch (error) {
+        case '':
+          
+          break;
+      
+        default:
+          alert(error)
+          break;
+      }
+    }
+  }
+   
+  return(
+    <GoogleLogin
+      clientId = "272363126551-uq08f8915557rg163036p2tar044cum2.apps.googleusercontent.com"
+      buttonText = "Sign in with google"
+      onSuccess = {GoogleResponse}
+      onFailure= {GoogleResponse}
+    />
+  )
 }
 
 export default Login;
-

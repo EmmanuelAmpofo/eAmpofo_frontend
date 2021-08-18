@@ -7,6 +7,8 @@ import Register from './pages/register'
 import Chat from './pages/chat';
 import Join from './pages/join';
 import login from './pages/login';
+import privateMessage from './components/privatemessage';
+
 
 class App extends Component {
 
@@ -33,6 +35,7 @@ class App extends Component {
             <Route path="/chat/:name/:room" component={Chat} />
             <Route path="/join" component={Join} />
             <Route path="/login" component={login} />
+            <Route path='/privatemessage' component={privateMessage} />
           </Switch>
         </Router>
       </div>
