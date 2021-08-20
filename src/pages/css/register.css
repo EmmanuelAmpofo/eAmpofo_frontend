@@ -1,16 +1,16 @@
 .firstName{
    height: 5vh;
-   width: 25vw;
+   width: 30vw;
    margin-bottom: 2vh;
 }
 .lastName{
    height: 5vh;
-   width: 25vw;
+   width: 30vw;
    margin-bottom: 2vh;
 }
 .formrows{
    position: absolute;
-   left: 38%;
+   left: 35%;
    top: 20%;
    margin: 0 auto;
 }

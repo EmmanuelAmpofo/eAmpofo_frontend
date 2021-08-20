@@ -1,17 +1,17 @@
 .formrow{
     position: absolute;
-    left: 38%;
+    left: 35%;
     top: 30%;
     margin: 0 auto;
 }
 .email{
-    width: 25vw;
+    width: 30vw;
     height: 5vh;
     margin-bottom: 2vh;
     border-radius: 5px;
 }
 .password{
-    width: 25vw;
+    width: 30vw;
     height: 5vh;
     /* margin-bottom: 2vh; */
     border-radius: 5px;

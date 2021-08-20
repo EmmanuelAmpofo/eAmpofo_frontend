@@ -26,7 +26,7 @@ const privateMessage = () => {
                           name="newMsg"
                           placeholder="Type your message..."
                           autoComplete="off"
-                        //   onChange={this.inputUpdate.bind(this)}
+                          // onChange={}
                         />
                         <span className="bottom_border"></span>
                       </div>

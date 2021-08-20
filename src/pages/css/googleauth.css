@@ -1,0 +1,8 @@
+.googleauth{
+    border: 2px solid black;
+    border-radius: 5px;
+    display: inline-block;
+    position: absolute;
+    left: 47vw;
+    top: 57.5vh;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../pages/css/activeUsers.css';
 
 class ActiveUsers extends Component {
   constructor(props) {
@@ -48,7 +49,7 @@ class ActiveUsers extends Component {
             name="searchTerm"
             className="search"
             onChange={this.inputUpdate.bind(this)}
-            placeholder="Search..."
+            placeholder="Search by email..."
           />
         </div>
       </div>

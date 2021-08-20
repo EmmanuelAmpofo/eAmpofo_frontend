@@ -40,6 +40,7 @@ class Join extends Component {
 
     return (
       <div className="joinForm">
+        <h2>Join Group</h2>
         <div className="form_wrap">
           <div className="form_row">
             <div className="form_item">
@@ -70,7 +71,7 @@ class Join extends Component {
           </div>
           <div className="form_buttons">
             <button onClick={() => this.join()} className="btn">
-              ADD TO BATCH
+              JOIN 
             </button>
           </div>
         </div>
