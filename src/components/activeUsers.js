@@ -39,11 +39,13 @@ class ActiveUsers extends Component {
                 <span>
                   <a href="/privateMessage">{user.firstName}</a>
                 </span>
+                {/* <hr></hr> */}
               </li>
             ))}
           </ul>
-        </div>{" "}
+        </div>
         <br></br>
+        
         <div>
           <input
             name="searchTerm"

@@ -7,7 +7,7 @@ class Messages extends Component {
                 <div id="list">
                     <ul>
                         {this.props.messages.filter(message => message.group === this.props.group).map((message, index) => (
-                            <li key={index}>
+                            <li key={index}> 
 
                                 {message.url &&
                                     <div>
@@ -22,7 +22,7 @@ class Messages extends Component {
                                 }
 
                                 {!message.url &&
-                                    <div>
+                                    <div><img src="https://picsum.photos/200" alt='We are as confused as you are. Check back later'/>
                                         <div className="msg">
                                             <h4>{message.from}</h4>
                                             <div className="body">

@@ -4,5 +4,15 @@
     display: inline-block;
     position: absolute;
     left: 47vw;
-    top: 57.5vh;
+    top: 58.4vh;
+}
+
+@media (max-width: 350px) {
+    .googleauth{
+        width: 30vw;
+        height: 7vh;
+        position: absolute;
+        top: 54.5vh;
+        font-size: 1vw;
+    }
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import GoogleClientLogin from '../pages/googleauth';
 
 import "../pages/css/login.css";
@@ -9,7 +10,7 @@ import '../pages/css/googleauth.css';
 // import { Redirect } from 'react-router';
 
 const Login = (props) => {
-  
+  const history = useHistory();
   const [email, setEmail] = useState(" ");
   const [password, setPassword] = useState(" ");
   const [loggedIn, setLoggedIn] = useState(
@@ -27,6 +28,7 @@ const Login = (props) => {
 
   //prevent default behaviour of button on click
   const onClickButton = (event) => {
+    
     if (email && password) {
       const credentials = {
         email: email,
@@ -35,20 +37,31 @@ const Login = (props) => {
       const headers = {
         "Content-type": "application/json",
       };
+
       // Login url by concatenating with the backend url
-      const LOGIN_URL = "/users/login";
+      const LOGIN_URL = "http://localhost:8080/users/login";
       axios.post(LOGIN_URL, credentials, { headers }).then((response) => {
         const { data } = response;
         console.log(data);
 
-        if (data.status !== 200) alert(data.error);
+        if (data.status !== 200){ 
+          alert(data.error) 
+          return
+        }
         else {
           setLoggedIn(true);
           localStorage.setItem("token", JSON.stringify(data.token));
           localStorage.setItem("email", JSON.stringify(email));
+          
+          history.push('/join')
         }
+
+        // eslint-disable-next-line no-restricted-globals
+      
       });
-    } else {
+      
+    } 
+    else {
       event.preventDefault();
     }
   };
@@ -75,8 +88,8 @@ const Login = (props) => {
           <h5>
             Dont have an account? <a href="/">Sign Up</a>{" "}
           </h5>
-          <Link to="/join" onClick={onClickButton}>
-            <button className="btnWrapp" type="submit">
+          <Link >
+            <button className="btnWrapp" type="submit" onClick={onClickButton}>
               Sign In
             </button>
           </Link>

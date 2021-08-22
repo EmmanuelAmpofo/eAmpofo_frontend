@@ -25,6 +25,7 @@ function GoogleClientLogin(){
      
     return(
       <GoogleLogin
+      className='g'
         clientId = "272363126551-uq08f8915557rg163036p2tar044cum2.apps.googleusercontent.com"
         buttonText = "Sign in with google"
         onSuccess = {GoogleResponse}
