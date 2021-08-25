@@ -56,13 +56,12 @@ const Login = (props) => {
           history.push('/join')
         }
 
-        // eslint-disable-next-line no-restricted-globals
-      
       });
       
     } 
     else {
       event.preventDefault();
+      alert('Empty input fields')
     }
   };
 
@@ -76,6 +75,7 @@ const Login = (props) => {
             type="text"
             placeholder="Enter your email"
             onChange={onChangeEmail}
+            required={true}
           />{" "}
           <br></br>
           <input

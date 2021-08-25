@@ -6,14 +6,6 @@ const privateMessage = () => {
       <div className="chatPage">
 
         <div className="messages_wrap">
-          {/* <h1>
-        <Link to="/">
-            <i className="fas fa-chevron-circle-left"></i>
-        </Link>
-        {this.props.match.params.room}
-    </h1> */}
-
-          {/* <Messages messages={this.state.messages} room={this.props.match.params.room} /> */}
 
           <div className="newMsgForm">
             <div className="wrap">
